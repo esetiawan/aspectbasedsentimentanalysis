@@ -15,7 +15,7 @@
 # Pengumpulan Data
 Teknik web scraping merupakan teknik yang dilakukan dalam proses pengumpulan data. Proses pengumpulan data ini terdiri dari pencarian ulasan menggunakan kata kunci, pengambilan ID, dan mulai proses scraping. Pada penelitian ini web scraping dilakukan dengan menggunakan javascript. Pertama kita perlu mencari produk dimana terdapat ulasan yang dibutuhkan seperti yang terlihat pada Gambar.
 
-![Halaman Pencarian Ulasan Dengan Kata Kunci]("https://github.com/esetiawan/aspectbasedsentimentanalysis/blob/master/images/halaman_pencarian_ulasan_dengan_kata_kunci.png?raw=true")
+![]("images/halaman_pencarian_ulasan_dengan_kata_kunci.png")
 
 Pencarian akan secara otomatis menampilkan hasil pencarian produk mana saja yang sesuai dengan kata kunci yang kita berikan dan kita dapat memilih produk mana yang akan diambil ulasannya. Selanjutnya kita perlu mencari ID dari ulasan yang ada pada produk tersebut. Dengan menggunakan ID tersebut dapat dilakukan scraping ke seluruh ulasan yang ada. Program scraping akan dikumpulan dalam file JSON dimana kita dapat konversikan kedalam format file seperti _csv_ atau _xlsx_. Hasil ulasan terdiri dari tanggal, nama pembeli, produk yang dibeli, ulasan, dan rating. Setelah dilakukan proses pengumpulan data, didapatkan sebanyak 3114 ulasan. Untuk code scraping dapat dilihat pada segmen program 
 
@@ -56,7 +56,7 @@ for i in range(1,6):
 
 Sedangkan contoh hasil scraping dapat dilihat pada Gambar di bawah ini. Dalam hasil scraping didapatkan beberapa kolom. Namun, dalam penelitian ini hanya menggunakan kolom ulasan. Dalam melakukan scraping, penulis mengalami kesulitan tidak bisa melakukan scrapping per kategori. Penulis hanya bisa melakukan scrapping per ID item. Selain itu, saat melakukan scrapping harus sering update access token. Dari pihak bukalapak untuk access token akan berubah setiap 15 menit.
 
-![Hasil Scraping]("https://github.com/esetiawan/aspectbasedsentimentanalysis/blob/master/images/hasil_scraping.png?raw=true")
+![]("images/hasil_scraping.png")
 
 # Labeling Dataset
 Pada penelitian ini pelabelan berdasarkan penelitian yang dilakukan oleh Ari Bangsa dkk, yaitu label aspek terdiri dari akurasi, kualitas, pelayanan, harga, pengemasan, dan pengiriman. Sedangkan label sentiment hanya terdiri dari positif dan negatif. Dataset yang digunakan dalam penelitian ini sebanyak 3114 ulasan, dimana distribusi dataset tersebut dapat dilihat dalam Tabel. Dari tabel tersebut dapat dilihat bahwa distribusi dataset tidak merata.
@@ -180,7 +180,7 @@ for x in x.split()))
 ```
 
 ## Punctuation Removal
-Punctuation removal merupakan proses menghapus karakter selain huruf termasuk tanda baca. Selain itu punctuation removal penelitian ini juga menghapus tag HTML, menghapus non-ascii dan menghapus spasi berlebih. Pada segmen program 5.3 merupakan kode program yang digunakan untuk proses punctuation removal.
+Punctuation removal merupakan proses menghapus karakter selain huruf termasuk tanda baca. Selain itu punctuation removal penelitian ini juga menghapus tag HTML, menghapus non-ascii dan menghapus spasi berlebih. Pada segmen program merupakan kode program yang digunakan untuk proses punctuation removal.
 
 ```python
 def cleaning(df):    
@@ -253,7 +253,7 @@ X_test = create_input(sentence_test)
 ```
 Pada gambar di bawah ini hasil tokenisasi, dimana terdapat dua hasil array. Pertama merupakan id berdasarkan vocabulary, sedangkan kedua merupakan attention mask yang berfungsi memberi infomasi ke mesin id tersebut apakah perlu diproses atau tidak. Apabila nilai attention mask adalah 1, maka diproses oleh mesin. Sebaliknya kalau nilai 0, maka akan diabaikan mesin. Kata – kata yang tidak ada pada vocabulary akan kata – kata dapat dipecah menjadi sub kata dengan simbol ##.
 
-![Hasil Tokenisasi]("https://github.com/esetiawan/aspectbasedsentimentanalysis/blob/master/images/hasil_tokenisasi.png?raw=true")
+![]("images/hasil_tokenisasi.png")
 
 Pada penelitian ini menggunakan panjang vektor / vocabulary size sebesar 128. Karena kalimat input terpanjang dari dataset adalah 73 kata. Sedangkan 2n yang bisa memuat kalimat input sebesar 73 adalah 27 yaitu 128. Setelah dilakukan proses embedding dengan menggunakan BERT, didapatkan total id token dari kalimat input adalah 32,023 token. Dari 32,023 token tersebut, ada kata / token yang menjadi input secara berulang. Setelah dilakukan filtering terdapat 2,701 token yang tidak berulang. Dari total token yang ada, dapat diperkirakan rata-rata jumlah token setiap input. Hal ini dilakukan dengan cara total token dibagi dengan jumlah ulasan, yaitu 32,023 dibagi 3,114 maka didapatkan rata-rata jumlah token dari setiap input adalah 11 token. 
 
@@ -262,11 +262,11 @@ Dari sini pula kita dapat mengetahui sparse matrix atau banyaknya token yang ber
 # Model LSTM
 Arsitektur jaringan dibentuk untuk menghasilkan akurasi yang optimal. Setelah menerima output dari BERT embedding, selanjutnya adalah melakukan pelatihan model LSTM. Pada lapisan LSTM pertama menggunakan jumlah neuron 128. Sedangkan lapisan LSTM kedua menggunakan jumlah neuron 64. Selanjutnya semua jaringan dihubungkan ke setiap neuron dengan lapisan fully connected dengan jumlah unit 6 berdasarkan jumlah kelas aspek pada penelitian ini. Tahap terakhir menggunakan fungsi aktivasi softmax. Selanjutnya setelah semua dibangun model dikonfigurasi terlebih dahulu dengan menggunakan oprimasi Adam dan MSE untuk mengetahui nilai loss dari model yang sudah terbentuk. Parameter lainnya untuk membantu proses training adalah ukuran batch size dan epoch. Berdasarkan uraian tersebut, untuk arsitektur jaringan LSTM dapat dilihat pada Gambar.
 
-![Arsitektur LSTM]("https://github.com/esetiawan/aspectbasedsentimentanalysis/blob/master/images/arsitektur_LSTM.png?raw=true")
+![]("images/arsitektur_LSTM.png")
 
 # Model CNN
 Setelah menerima output dari LSTM, selanjutnya adalah melakukan pelatihan model CNN. Untuk model sentimen dilatih berdasarkan kelas aspek yang ada. Hal ini bertujuan untuk meminimalisir kesalahan hasil sentimen, karena dengan ulasan yang sama dalam aspek yang berbeda belum tentu memiliki polarity yang sama. Lapisan pertama CNN adalah convolutional layer 1D dengan filter sebanyak 300 dengan 5 konvolusi. Selanjutnya dilakukan proses pooling layer dengan menggunakan max pooling. Kemudian semua jaringan dihubungkan ke setiap neuron dengan lapisan fully connected dengan jumlah unit 2 berdasarkan jumlah kelas sentimen pada penelitian ini. 
 
 Tahap terakhir menggunakan fungsi aktivasi sigmoid. Setelah semua dibangun model dikonfigurasi terlebih dahulu dengan menggunakan optimasi Adam dan MSE untuk mengetahui nilai loss dari model yang sudah terbentuk. Parameter lainnya untuk membantu proses training adalah ukuran batch size dan epoch. Berdasarkan uraian tersebut, untuk arsitektur jaringan CNN dapat dilihat pada Gambar.
 
-![Arsitektur CNN]("https://github.com/esetiawan/aspectbasedsentimentanalysis/blob/master/images/arsitektur_CNN.png?raw=true")
+![]("images/arsitektur_CNN.png")
