@@ -1,7 +1,7 @@
 # Opinion Mining
 Opinion Mining can be categorized into two types: Stance Classification and Aspect-Based Sentiment Analysis. Let me explain each of them:
 
-# [Stance Classification](./stanceclassification/readme.md)
+# [Stance Classification](./stanceclassification/README.md)
 
 Stance Classification focuses on determining the stance or viewpoint expressed in a text or opinion. It aims to classify the stance as positive, negative, or neutral towards a particular target, such as a topic, event, or entity. The task is to analyze the text and understand the author's perspective or position on the given target. Stance Classification is useful in various applications, such as understanding public opinion on social and political issues or analyzing customer sentiments towards products or services.
 
