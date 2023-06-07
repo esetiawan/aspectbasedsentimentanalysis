@@ -1,12 +1,13 @@
 # Opinion Mining
-Opinion Mining can be categorized into two types: Stance Classification and Aspect-Based Sentiment Analysis. Let me explain each of them:
+
+Opinion Mining (penganalisisan opini) memang melibatkan dua bidang utama, yaitu Emotion Analysis (analisis emosi) dan Aspect-Based Sentiment Analysis (analisis sentimen berdasarkan aspek).
 
 # [Stance Classification](./stanceclassification/README.md)
 
-Stance Classification focuses on determining the stance or viewpoint expressed in a text or opinion. It aims to classify the stance as positive, negative, or neutral towards a particular target, such as a topic, event, or entity. The task is to analyze the text and understand the author's perspective or position on the given target. Stance Classification is useful in various applications, such as understanding public opinion on social and political issues or analyzing customer sentiments towards products or services.
+Stance Classification berfokus pada identifikasi dan pemahaman sudut pandang yang terkandung dalam teks atau opini. Tujuan dari analisis ini adalah untuk menentukan perspektif positif, negatif, atau netral yang terkait dengan suatu teks atau opini. Stance Classification dapat mempengaruhi cara kita memahami opini seseorang, dan dengan menggunakan analisis emosi, kita dapat menggali lebih dalam untuk memahami respon emosional seseorang terhadap suatu topik atau produk.
 
 # [Aspect-Based Sentiment Analysis](./aspectbasedsentimentanalysis/README.md)
 
-Aspect-Based Sentiment Analysis, as mentioned earlier, involves identifying different aspects or components within a text and analyzing the sentiment associated with each aspect. It aims to determine the sentiment (positive, negative, or neutral) expressed towards specific aspects or features of a product, service, or topic. By breaking down the opinions into aspects, this approach provides a more granular understanding of sentiments related to different aspects, allowing businesses to identify strengths, weaknesses, and areas for improvement.
+Aspect-Based Sentiment Analysis melibatkan pemisahan opini menjadi aspek-aspek yang berbeda dan analisis sentimen untuk setiap aspek tersebut. Aspek dapat berupa fitur, atribut, atau bagian-bagian tertentu dari suatu produk atau topik yang diperdebatkan. Tujuannya adalah untuk menentukan sentimen positif, negatif, atau netral terhadap setiap aspek tersebut. Dengan cara ini, kita dapat memahami lebih rinci bagaimana seseorang merespons berbagai aspek dari suatu entitas atau topik, serta mengidentifikasi area yang perlu diperbaiki atau ditingkatkan.
 
-Both Stance Classification and Aspect-Based Sentiment Analysis are valuable techniques in Opinion Mining. They enable the extraction of valuable insights from text data, helping businesses, researchers, or decision-makers understand public opinions, customer feedback, or sentiments expressed on various topics. It's important to note that the accuracy of these techniques may vary depending on the specific algorithms and data used for analysis.
+Kedua bidang ini bersama-sama memberikan pemahaman yang lebih komprehensif tentang opini atau sentimen yang terkandung dalam teks. Emosi dan aspek-aspek yang ditemukan melalui Opinion Mining dapat berguna dalam berbagai bidang, seperti analisis sosial media, manajemen merek, atau penelitian pasar. Namun, penting untuk diingat bahwa meskipun Opinion Mining dapat memberikan wawasan yang berharga, hasilnya dapat bervariasi dan mungkin tidak selalu akurat secara sempurna.
